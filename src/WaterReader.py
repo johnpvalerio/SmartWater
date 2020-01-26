@@ -2,7 +2,7 @@ import functools
 import time
 import serial 
 import struct
-arduinoSerialData = serial.Serial('/dev/ttyACM1',9600)
+arduinoSerialData = serial.Serial('/dev/ttyACM0',9600)
 
 def timer(func):
     @functools.wraps(func)
@@ -19,7 +19,8 @@ def timer(func):
 @timer
 def water_read():
     while True:
-        data = (int(float(arduinoSerialData.readline().decode('utf-8'))))
+        data= int(float(arduinoSerialData.readline().decode('utf-8')))
+        print(data)        
         if data != 0:
             continue
         else:
