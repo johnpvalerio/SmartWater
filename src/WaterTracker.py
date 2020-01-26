@@ -16,13 +16,20 @@ def water_calc(time):
 
 
 def update_user(usr_time):
-    last_rec = db[str(user1)][str(date.today() - timedelta(days=1))]
+    global db
+    print(db[str(user1)])
+    d = date.today() - timedelta(days=1)
+    print(type(d))
+    print(d)
+    last_rec = db[str(user1)][d]
     pb = last_rec['chug_pb']
     if pb < usr_time:
-        db[str(user1)][str(date.today())]['chug_pb'] = usr_time
+        
+        #db[str(user1)][str(date.today())]['chug_pb'] = str(usr_time)
+        db[str(user1)][date.today()]['chug_pb'] = str(usr_time)
     # todo: daily_intake update
-    db[str(user1)][str(date.today())]['freq'] += 1
-    db[str(user1)][str(date.today())]['total_intake'] += water_calc(usr_time)
+    db[str(user1)][date.today()]['freq'] += 1
+    db[str(user1)][date.today()]['total_intake'] += water_calc(usr_time)
 
 
 def load_db():
@@ -30,9 +37,10 @@ def load_db():
     with open('WaterInfo.json', 'r') as r_f:
         temp = json.load(r_f)
     for user, v in temp.items():
-        db[user] = {}
+        db[str(user)] = {}
         for d, i in v.items():
-            db[user][datetime.datetime.strptime(d, '%Y-%m-%d')] = i
+            db[str(user)][datetime.datetime.strptime(d, '%Y-%m-%d').date()] = i
+    #print(db)
 
 
 def save_db():
@@ -65,6 +73,8 @@ def graph():
     for k,v in db[str(user1)].items():
         vals1.append(v['total_intake'])
         dates.append(k)
+        print(k)
+        print(v['total_intake'])
     print(len(dates))
     print(len(vals1))
     print(dates)
@@ -73,14 +83,7 @@ def graph():
     for k,v in db[str(user2)].items():
         vals2.append(v['total_intake'])
     plt.plot(dates, vals2)
-    # for user, v in db.items():
-    #     for d, val in v.items():
-    #         print(d)
-    #         print(val)
-    #
-    # vals.append(val['total_intake'])
 
-    # plt.plot(dates, vals)
     plt.grid(True)  # grid lines
     plt.title("Time series of total water intake")  # title
     plt.xticks(ticks=dates)  # display only given dates
