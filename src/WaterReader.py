@@ -9,7 +9,7 @@ def timer(func):
         func()
         end_time = time.perf_counter()
         run_time = end_time - start_time
-        print(f"Finished {func.__name__!r} in {run_time:.4f} secs")
+        printf("Finished {func.__name__!r} in {run_time:.4f} secs")
         return run_time
 
     return wrapper_timer

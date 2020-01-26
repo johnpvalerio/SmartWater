@@ -1,5 +1,7 @@
 from datetime import date
 import json
+from tkinter import *
+import tkSnack
 
 def update_user():
     with open('WaterInfo.JSON', 'w') as file:
@@ -14,3 +16,11 @@ def setup():
     db[date.today()] = temp
 
     return db
+
+def sound(sound_clip_wav):
+    root = Tk()
+    tkSnack.initializeSnack(root)
+    snd = tkSnack.Sound()
+    snd.read(sound_clip_wav)
+    snd.play(blocking=1)
+    
