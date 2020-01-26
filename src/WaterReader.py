@@ -1,6 +1,8 @@
 import functools
 import time
-
+import serial 
+import struct
+arduinoSerialData = serial.Serial('/dev/ttyACM1',9600)
 
 def timer(func):
     @functools.wraps(func)
@@ -9,7 +11,6 @@ def timer(func):
         func()
         end_time = time.perf_counter()
         run_time = end_time - start_time
-        print(f"Finished {func.__name__!r} in {run_time:.4f} secs")
         return run_time
 
     return wrapper_timer
@@ -18,9 +19,8 @@ def timer(func):
 @timer
 def water_read():
     while True:
-        with open('WaterInput.txt') as file:
-            data = file.read()
-            if data != '0':
-                continue
-            else:
-                return
+        data = (int(float(arduinoSerialData.readline().decode('utf-8'))))
+        if data != 0:
+            continue
+        else:
+            return
