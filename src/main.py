@@ -1,8 +1,8 @@
-
-from WaterReader import water_read
-from WaterTracker import setup
+from src.WaterReader import water_read
+from src.WaterTracker import setup
 
 if __name__ == '__main__':
-     output = water_read()
-     print(output)
-     setup()
+     while True:
+          output = water_read()
+          print(output)
+          setup()
