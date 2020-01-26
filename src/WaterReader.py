@@ -3,7 +3,7 @@ import time
 import serial
 import struct
 
-arduinoSerialData = serial.Serial('/dev/ttyACM1', 9600)
+# arduinoSerialData = serial.Serial('/dev/ttyACM1', 9600)
 
 
 def timer(func):
