@@ -1,8 +1,8 @@
 
 from src.WaterReader import water_read
-from src.WaterTracker import setup
+from src.WaterTracker import setup, update_user
 
 if __name__ == '__main__':
     # output = water_read()
     # print(output)
-    setup()
+    update_user()
