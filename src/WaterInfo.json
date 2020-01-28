@@ -1,0 +1,42 @@
+{
+    "1234": {
+        "2020-01-24": {
+            "total_intake": 20,
+            "daily_intake": 0,
+            "chug_pb": 0,
+            "freq": 0
+        },
+        "2020-01-25": {
+            "total_intake": 40,
+            "daily_intake": 0,
+            "chug_pb": 0,
+            "freq": 0
+        },
+        "2020-01-26": {
+            "total_intake": 70,
+            "daily_intake": 0,
+            "chug_pb": 0,
+            "freq": 0
+        }
+    },
+    "5678": {
+        "2020-01-24": {
+            "total_intake": 20,
+            "daily_intake": 0,
+            "chug_pb": 0,
+            "freq": 0
+        },
+        "2020-01-25": {
+            "total_intake": 40,
+            "daily_intake": 0,
+            "chug_pb": 0,
+            "freq": 0
+        },
+        "2020-01-26": {
+            "total_intake": 70,
+            "daily_intake": 0,
+            "chug_pb": 0,
+            "freq": 0
+        }
+    }
+}
